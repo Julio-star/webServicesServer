@@ -9,11 +9,11 @@ const authMiddleware = require('../middlewares/auth');
 const userController = require('../controllers/user');
 
 // available routes (CRUD - get/post/put/delete)
-router.get('/', [authMiddleware, objectMiddleware], userController.getUserList);
+router.get('/', objectMiddleware, userController.getUserList);
 router.get('/:id', objectMiddleware, userController.getUser);
 router.post('/signup', objectMiddleware, userController.createUser);
 router.post('/login', objectMiddleware, userController.login);
-router.put('/:id', [authMiddleware, objectMiddleware], userController.updateUser);
-router.delete('/:id', [authMiddleware, objectMiddleware], userController.deleteUser);
+router.put('/:id', objectMiddleware, userController.updateUser);
+router.delete('/:id', objectMiddleware, userController.deleteUser);
 
 module.exports = router;
